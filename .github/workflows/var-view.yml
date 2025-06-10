@@ -15,20 +15,20 @@ jobs:
 
         echo "Organization Variables:"
         gh variable list --org $GITHUB_REPOSITORY_OWNER --json name,value | jq -r '.[] | "\(.name): \(.value)"'
-    - name: Variables(refer value)
-      run: |
-        # 特定の変数の値を参照する
-        echo "Repository Variable 'FOOBAR': ${{ vars.FOOBAR }}"
-    - name: Secrets(gh-cli)
-      run: |
-        # 定義されているSecretsの一覧とその値を出力する
-        echo "Repository Secrets:"
-        gh secret list --json name,value | jq -r '.[] | "\(.name): \(.value)"'
+    # - name: Variables(refer value)
+    #   run: |
+    #     # 特定の変数の値を参照する
+    #     echo "Repository Variable 'FOOBAR': ${{ vars.FOOBAR }}"
+    # - name: Secrets(gh-cli)
+    #   run: |
+    #     # 定義されているSecretsの一覧とその値を出力する
+    #     echo "Repository Secrets:"
+    #     gh secret list --json name,value | jq -r '.[] | "\(.name): \(.value)"'
 
-        echo "Organization Secrets:"
-        gh secret list --org $GITHUB_REPOSITORY_OWNER --json name,value | jq -r '.[] | "\(.name): \(.value)"'
-      - name: Secrets(refer value)
-      run: |
-        # 特定のシークレットの値を参照する
-        echo "Repository Secret 'FOOBAR': ${{ secrets.FOOBAR }}"
+    #     echo "Organization Secrets:"
+    #     gh secret list --org $GITHUB_REPOSITORY_OWNER --json name,value | jq -r '.[] | "\(.name): \(.value)"'
+    #   - name: Secrets(refer value)
+    #   run: |
+    #     # 特定のシークレットの値を参照する
+    #     echo "Repository Secret 'FOOBAR': ${{ secrets.FOOBAR }}"
         
