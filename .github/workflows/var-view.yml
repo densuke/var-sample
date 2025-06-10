@@ -9,20 +9,10 @@ jobs:
     steps:
     - name: checkout source
       uses: actions/checkout@v4
-    - name: Variables(gh-cli)
-      env:
-        GH_TOKEN: ${{ github.token }}
+    - name: Variables(refer value)
       run: |
-        # 定義されているVariablesの一覧とその値を出力する
-        echo "Repository Variables:"
-        gh variable list --json name,value | jq -r '.[] | "\(.name): \(.value)"'
-
-        echo "Organization Variables:"
-        gh variable list --org $GITHUB_REPOSITORY_OWNER --json name,value | jq -r '.[] | "\(.name): \(.value)"'
-    # - name: Variables(refer value)
-    #   run: |
-    #     # 特定の変数の値を参照する
-    #     echo "Repository Variable 'FOOBAR': ${{ vars.FOOBAR }}"
+        # 特定の変数の値を参照する
+        echo "Repository Variable 'FOOBAR': ${{ vars.FOOBAR }}"
     # - name: Secrets(gh-cli)
     #   run: |
     #     # 定義されているSecretsの一覧とその値を出力する
