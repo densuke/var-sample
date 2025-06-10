@@ -8,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Variables(gh-cli)
+      env:
+        GH_TOKEN: ${{ github.token }}
       run: |
         # 定義されているVariablesの一覧とその値を出力する
         echo "Repository Variables:"
